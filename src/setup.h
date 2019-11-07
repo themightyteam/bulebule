@@ -17,6 +17,8 @@
 
 #include "mylibopencm3.h"
 
+#define BURI_START_SHIFT 0.05
+
 /** Universal constants */
 #define MICROMETERS_PER_METER 1000000
 #define MICROSECONDS_PER_SECOND 1000000
@@ -29,7 +31,7 @@
 #define MIDDLE_MAZE_DISTANCE ((CELL_DIMENSION - WALL_WIDTH) / 2.)
 
 /** Motor driver input voltage */
-#define MOTOR_DRIVER_INPUT_VOLTAGE 9.
+#define MOTOR_DRIVER_INPUT_VOLTAGE 4.
 
 /** Mouse dimensions */
 #define MOUSE_MOTOR_TAIL 0.037
@@ -44,7 +46,7 @@
 #define MOUSE_MASS 0.11
 #define MOUSE_MOMENT_OF_INERTIA 0.000125
 #define MOUSE_WHEELS_SEPARATION 0.065
-#define MOUSE_MAX_ANGULAR_VELOCITY 20
+#define MOUSE_MAX_ANGULAR_VELOCITY 15 //5  // 20
 
 /** System clock frequency is set in `setup_clock` */
 #define SYSCLK_FREQUENCY_HZ 72000000
@@ -59,7 +61,7 @@
  * in order to protect the locomotion system and avoid reaching uncontrolled
  * speeds.
  */
-#define MAX_PWM_PERIOD 1024
+#define MAX_PWM_PERIOD 1024 //1024
 
 /**
  * Maximum time period allowed with saturated motor driver output.

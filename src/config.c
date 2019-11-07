@@ -7,6 +7,7 @@ static volatile struct control_constants control = {
     .kd_linear = KD_LINEAR,
     .kp_angular = KP_ANGULAR,
     .kd_angular = KD_ANGULAR,
+    .ki_angular = KI_ANGULAR,
     .kp_angular_front = KP_ANGULAR_FRONT,
     .ki_angular_front = KI_ANGULAR_FRONT,
     .kp_angular_side = KP_ANGULAR_SIDE,
@@ -15,6 +16,24 @@ static volatile struct control_constants control = {
     .ki_angular_diagonal = KI_ANGULAR_DIAGONAL};
 
 static volatile float linear_speed_limit = LINEAR_SPEED_LIMIT;
+
+
+void modify_control_for_resolving(void)
+{
+  control.kp_linear = KP_LINEAR_RESOLVING;
+  control.kd_linear = KD_LINEAR_RESOLVING;
+  control.kp_angular = KP_ANGULAR_RESOLVING;
+  control.kd_angular = KD_ANGULAR_RESOLVING;
+  control.ki_angular = KI_ANGULAR_RESOLVING;
+  control.kp_angular_front = KP_ANGULAR_FRONT_RESOLVING;
+  control.ki_angular_front = KI_ANGULAR_FRONT_RESOLVING;
+  control.kp_angular_side = KP_ANGULAR_SIDE_RESOLVING;
+  control.ki_angular_side = KI_ANGULAR_SIDE_RESOLVING;
+  control.kp_angular_diagonal = KP_ANGULAR_DIAGONAL_RESOLVING;
+  control.ki_angular_diagonal = KI_ANGULAR_DIAGONAL_RESOLVING;
+
+}
+
 
 float get_micrometers_per_count(void)
 {

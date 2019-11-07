@@ -24,6 +24,7 @@ void power_left(int32_t power)
 		power = -power;
 		forward = false;
 	}
+
 	if (power > MAX_PWM_PERIOD) {
 		power = MAX_PWM_PERIOD;
 		saturated_left += 1;
@@ -60,6 +61,7 @@ void power_right(int32_t power)
 		power = -power;
 		forward = false;
 	}
+	
 	if (power > MAX_PWM_PERIOD) {
 		power = MAX_PWM_PERIOD;
 		saturated_right += 1;
