@@ -24,7 +24,7 @@
 #define KD_LINEAR 6.//16.
 #define KP_ANGULAR 0.07  //0.1 // 0.05
 #define KD_ANGULAR 1.
-#define KI_ANGULAR .001
+#define KI_ANGULAR .0
 #define KP_ANGULAR_FRONT 0.5 //.5
 #define KI_ANGULAR_FRONT 2.0//2.
 #define KP_ANGULAR_SIDE 4.
