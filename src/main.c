@@ -327,8 +327,8 @@ int main(void)
 	speaker_play_beeps(3);
 
 	// set goal classic by default
-	set_goal_classic();
-	//add_goal(10, 2);
+	//set_goal_classic();
+	add_goal(10, 2);
 	
 	if (!maze_is_saved())
 	  {

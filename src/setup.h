@@ -70,7 +70,7 @@
  * collision occurs, the robot motor control stops working and the motor driver
  * is disabled.
  */
-#define MAX_MOTOR_DRIVER_SATURATION_PERIOD 0.01
+#define MAX_MOTOR_DRIVER_SATURATION_PERIOD 0.01 * 3
 
 /**
  * Maximum number of movements in a smoothed path.
