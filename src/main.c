@@ -230,6 +230,34 @@ static void configure_and_move(void)
 
 
 /**
+ * @brief Obtain sensors data programatically
+ */
+static void configure_sensor_callibration(void) {
+
+  float force;
+  
+  speaker_play_beeps(5);
+
+  float min_distance = MOUSE_START_SHIFT;
+  float max_distance = CELL_DIMENSION * 2.7;
+  float range = 0.1;
+  uint8_t repetitions = 3;
+
+  // Reset the log
+  force = hmi_configure_force(0.10 /*0.1*/, 0.025/*0.05*/);
+  kinematic_configuration(force, true);
+  
+  start_data_logging(log_data_callibration);
+  before_moving();
+
+  execute_callibration_sequence(min_distance, max_distance, repetitions, range);
+
+  
+  stop_data_logging();
+}
+
+
+/**
  * @brief Configure the robot and execute the search/run.
  */
 static void configure_and_move_buri(void)
@@ -339,8 +367,7 @@ int main(void)
 	else
 	  {
 	    speaker_play_competition();
-	  }
-	
+	  }	
 
 	while(1) {
 
@@ -360,6 +387,10 @@ int main(void)
 	    break;
 
 	  case BUTTON_SHORT:
+	    //FIXME: preliminary sensor calibration fuction
+	    configure_sensor_callibration();
+	    break;
+	    
 	  case BUTTON_LONG:
 	    configure_and_move_buri();
 	    
@@ -391,20 +422,4 @@ int main(void)
 	}
 */
 
-	/*
-	while (1) {
-		switch (button_user_response()) {
-		case BUTTON_NONE:
-			break;
-		default:
-			configure_and_move();
-			break;
-		}
-		execute_command();
-	}
-	
-
-	return 0;
-
-	*/
 }
